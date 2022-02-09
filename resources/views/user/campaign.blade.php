@@ -1,7 +1,10 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+
+
+@section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
+
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -24,10 +27,7 @@
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
-                        </li>
-
-                       
-
+                        </li>                     
                         <li class="sidebar-title">Pages</li>
 
                         <li class="sidebar-item active ">
@@ -36,10 +36,7 @@
                                 <span>Campaign</span>
                             </a>
                         </li>
-                       
-
-
-                        
+                                            
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -156,9 +153,9 @@
                                                 <label>
                                                 Select Area<span class="text-danger text-bold"> *</span>
                                                 </label>
-                                                <select class="form-control form-control-sm" id="prod_Select" name="product_id">
+                                                <select class="form-control form-control-sm" id="area_select" name="product_id">
                                                 @foreach($database as $db)
-                                                    <option value="{{$db->id}}" selected>{{$db->name}}</option>
+                                                    <option value="{{$db->name}}" selected>{{$db->name}}</option>
                                                 @endforeach
 
                                                 </select>
@@ -168,7 +165,7 @@
                                                 <label>
                                                     Message Quantity<span class="text-danger text-bold"> *</span>
                                                 </label>
-                                                <input type="number" id="qt" onkeyup="quantity_calculate(this);" value=""
+                                                <input type="number" id="qty" onkeyup="quantity_calculate(this);" value=""
                                                     class="form-control form-control-sm">
                                             </div>                             
                                             <div class="col-lg-1">
@@ -176,12 +173,29 @@
                                                     Add
                                                 </label>
                                                 <button class="btn btn-outline-info btn-sm form-control form-control-sm" type="button"
-                                                    onclick="addRow()"><i class="fa fa-plus"></i></button>
+                                                    onclick="addRow();"><i class="fa fa-plus"></i></button>
+                                            </div>
+
+                                            <div>
+                                            <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">SL</th>
+                                                <th scope="col">Area</th>
+                                                <th scope="col">QNTY</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbid">
+                                            </tbody>
+                                            </table>
                                             </div>
                                         </div>
 
 
-                                </section>
+
+                                </section> 
+
+                           
 
                             </div>
 
@@ -195,21 +209,24 @@
         </div>
     </div>
 
+ 
 <script>
-    var maxID = 0;
-    function getTemplateRow() {
-    var x = document.getElementById("templateRow").cloneNode(true);
-    x.id = "";
-    x.style.display = "";
-    x.innerHTML = x.innerHTML.replace(/{id}/, ++maxID);
-    return x;
-    }
-    function addRow() {
-    var t = document.getElementById("theTable");
-    var rows = t.getElementsByTagName("tr");
-    var r = rows[rows.length - 1];
-    r.parentNode.insertBefore(getTemplateRow(), r);
+    var sl = 0
+    function addRow(){
+        sl++;
+        var area = document.getElementById("area_select").value;
+        var qty = document.getElementById("qty").value;
 
+        var html = "<tr>"
+            html +="<td>"+ sl +"</td>";
+            html += "<td><input name='area[]' value="+area+"></td>";
+            html += "<td><input name='quantity[]' value="+qty+"></td>";
+            html += "</tr>"
+        document.getElementById("tbid").insertRow().innerHTML = html;    
     }
-</script>
+
     
+</script>
+
+@endsection
+
