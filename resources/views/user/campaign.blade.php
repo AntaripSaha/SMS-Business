@@ -89,31 +89,30 @@
                                                             <table class="table table-hover mb-0">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>SL</th>
+                                                                        <th>Select</th>
                                                                         <th>Area</th>
                                                                         <th>Total Numbers</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @php 
-                                                                    $i = 1;
-                                                                    @endphp
+                                                                    
                                                                     @foreach($database as $db)
                                                                     <tr>
-                                                                        <td class="text-bold-500">{{ $i }}</td>
+                                                                        <td>
+                                                                        <div class="card-body">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="area" id="select">
+                                                                            </div>
+                                                                        </div>
+                                                                        </td>
                                                                         <td >{{$db->name}}</td>
                                                                         <td >{{$db->number}}</td>
                                                                     </tr>
-                                                                    @php 
-                                                                    $i++;
-                                                                    @endphp
                                                                     @endforeach
-                                                                        
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                         {{$database->links()}}
-                                                                                                              
                                                     </form>
                                                 </div>
                                             </div>
