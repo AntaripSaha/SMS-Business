@@ -3,8 +3,6 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -97,7 +95,6 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                
                                                                     @php 
                                                                     $i = 1;
                                                                     @endphp
@@ -111,21 +108,14 @@
                                                                     $i++;
                                                                     @endphp
                                                                     @endforeach
-                                                                
-
-        
+                                                                        
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                         {{$database->links()}}
-                                                       
-
-                                                       
-
+                                                                                                              
                                                     </form>
-                                                 
                                                 </div>
-                                               
                                             </div>
                                         </div>
                                     </div>
@@ -141,12 +131,10 @@
                         <div class="col-12">
                             <div class="card">
                                 <section class="section">
-
                                         <div class="card">
                                             <h4>
                                                 Your Balance: {{$customer->balance}}
                                             </h4>
-
                                         </div>
                                         <div class="form-group m-form__group row">
                                             <div class="col-lg-2">
@@ -175,7 +163,6 @@
                                                 <button class="btn btn-outline-info btn-sm form-control form-control-sm" type="button"
                                                     onclick="addRow();"><i class="fa fa-plus"></i></button>
                                             </div>
-
                                             <div>
                                             <table class="table">
                                             <thead>
@@ -190,26 +177,14 @@
                                             </table>
                                             </div>
                                         </div>
-
-
-
-                                </section> 
-
-                           
-
+                                </section>                        
                             </div>
-
                         </div>
-
                     </div>
-
                 </section>
-                
             </div>          
         </div>
     </div>
-
- 
 <script>
     var sl = 0
     function addRow(){
@@ -224,9 +199,5 @@
             html += "</tr>"
         document.getElementById("tbid").insertRow().innerHTML = html;    
     }
-
-    
 </script>
-
 @endsection
-

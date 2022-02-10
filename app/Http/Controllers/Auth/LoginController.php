@@ -42,10 +42,9 @@ class LoginController extends Controller
     public function login(Request $req){
 
         $validate = $req->validate([
-            'email' => 'required|email',
             'password' => 'required',
         ]);
-        if(Auth::attempt(['email'=>$req->email, 'password'=>$req->password])){
+        if(Auth::attempt(['phone' => $req->phone, 'password' => $req->password])){
             if(auth()->user()->is_admin == 1){
                 return redirect()->route('admin.dashboard');
             }elseif(auth()->user()->is_admin == 2){
