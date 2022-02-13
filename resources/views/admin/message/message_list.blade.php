@@ -71,33 +71,50 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form action="{{route('database.add')}}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-info btn-sm">
-                                                Add Areas 
-                                            </button>
-                                        </form>
-                                          <!-- table hover -->
+                                        
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0" style="margin-top:20px">
+                                        <table class="table table-hover mb-0" style="margin-top:20px; margin-bottom:25px !important;">
                                             <thead>
                                                 <tr>
-                                                    <th>NAME</th>
-                                                    <th>Number</th>
-                                                    <th>Edit</th>
+                                                    <th>Customer</th>
+                                                    <th>Area</th>
+                                                    <th>Quantity</th>
+                                                    <th>Action</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($messages as $key=>$msg)
                                                 <tr>
+                                                    <td class="text-bold-500">{{$msg->user->name}}</td>
                                                     <td class="text-bold-500">{{$msg->database->name}}</td>
-                                                    <td>{{ $msg->message}}</td>
-                                                    <td><div class="row">
-                                                            <div class="col-sm-2">
-                                                                <a href="" class="btn btn-outline-success btn-sm">Edit</a>
-                                                            </div>
-                                                        </div>
+                                                    <td>{{ $msg->quantity }}</td>
+                                                    <td>
+                                                        <!-- Example single danger button -->
+                                                    <div class="btn-group">
+                                                        @if($msg->status == 0)
+                                                        <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Action
+                                                        </button>
+                                                        @elseif($msg->status == 1)
+                                                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Pending
+                                                        </button>
+                                                        @elseif($msg->status == 2)
+                                                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Processing
+                                                        </button>
+                                                        @elseif($msg->status == 3)
+                                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Completed
+                                                        </button>
+                                                        @endif
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="{{route('user.message.action', ['status'=> 1, 'id' => $msg->id ])}}" >Pending</a></li>
+                                                            <li><a class="dropdown-item" href="{{route('user.message.action', ['status'=> 2, 'id' => $msg->id ])}}">Processing</a></li>
+                                                            <li><a class="dropdown-item" href="{{route('user.message.action', ['status'=> 3, 'id' => $msg->id ])}}">Completed</a></li>
+                                                        </ul>
+                                                    </div>
                                                     </td>
                                                     <td><div class="row">
                                                             <div class="col-sm-2">

@@ -56,6 +56,7 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/database/delete/{id}', [DatabaseController::class, 'delete'])->name('database.delete');
 
     Route::any('/message/requests',[UserMessageController::class, 'list'])->name('user.message.list');
+    Route::any('/message/processing/{id}/{status}',[UserMessageController::class, 'action'])->name('user.message.action');
 
     
 });

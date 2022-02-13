@@ -9,8 +9,13 @@ use Illuminate\Http\Request;
 class UserMessageController extends Controller
 {
     public function list(){
-       return $messages = RequestMessage::with('database', 'user')->paginate(2);
+         $messages = RequestMessage::with('database', 'user')->paginate(4);
         return view('admin.message.message_list', compact('messages'));
+    }
+    public function action( $id, $status){
+        $request_messages = RequestMessage::where('id', $id)->update(array( 'status' => $status));
+        return redirect()->back()->with('success', 'Status Updated');
+
     }
 }
 

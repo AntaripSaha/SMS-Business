@@ -18,6 +18,8 @@ class CreateRequestMessagesTable extends Migration
             $table->string('area');
             $table->integer('customer_id');
             $table->longText('message');
+            $table->integer('quantity');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
