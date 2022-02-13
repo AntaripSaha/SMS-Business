@@ -1,8 +1,6 @@
 @include('layouts/layout')
 @yield('content')
 
-
-
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -39,14 +37,14 @@
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
-                            </li>
-                            <li class="sidebar-item ">
+                            </li>  
+                            <li class="sidebar-item active">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Message Request</span>
                                 </a>
                             </li>  
-                            <li class="sidebar-item active">
+                            <li class="sidebar-item">
                                 <a href="{{route('database')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Database</span>
@@ -57,59 +55,74 @@
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
         </div>
-    </div>    
+    </div>
     <div id="app">
         <div id="main">
         @include('layouts/flash-msg')
         @yield('content')  
             <div class="page-heading">
-         
                 <!-- Hoverable rows start -->
                 <section class="section">
                     <div class="row" id="table-hover-row">
-                        <form action="{{route('database.store')}}" method="POST">
-                        @csrf
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Information</h4>
-                                    </div>
-                                    
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                        <p> Enter The Name of the Area and The Phone Numbers</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label for="name">Name</label>
-                                                        <input type="text" class="form-control" name="name" required>
-                                                    </div>
-                                                        <div class="form-group mb-2">
-                                                            <label for="exampleFormControlTextarea1" class="form-label">Enter Mobile Numbers</label>
-                                                                <textarea class="form-control" name="number" id="exampleFormControlTextarea1" rows="5" ></textarea>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Databse List</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form action="{{route('database.add')}}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-info btn-sm">
+                                                Add Areas 
+                                            </button>
+                                        </form>
+                                          <!-- table hover -->
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-0" style="margin-top:20px">
+                                            <thead>
+                                                <tr>
+                                                    <th>NAME</th>
+                                                    <th>Number</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($messages as $key=>$msg)
+                                                <tr>
+                                                    <td class="text-bold-500">{{$msg->database->name}}</td>
+                                                    <td>{{ $msg->message}}</td>
+                                                    <td><div class="row">
+                                                            <div class="col-sm-2">
+                                                                <a href="" class="btn btn-outline-success btn-sm">Edit</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    </td>
+                                                    <td><div class="row">
+                                                            <div class="col-sm-2">
+                                                                <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                             
-                                        </div>
-                                        <button type="submit" class="btn btn-info btn-sm" style="margin-left: 20px; margin-bottom:20px;">
-                                            Submit
-                                        </button>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    {{$messages->links()}}
+                                    </div>
+
+                                  
                                 </div>
                             </div>
-                           
-
-                            
-                                            
-                        </form>                    
+                        </div>
                     </div>
                 </section>
                 <!-- Hoverable rows end -->
+
+           
             </div>
         </div>
     </div>

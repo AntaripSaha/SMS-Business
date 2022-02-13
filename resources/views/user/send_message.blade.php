@@ -54,7 +54,7 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Select Area</h3>
+                            <h3>Send SMS</h3>
                             <p class="text-subtitle text-muted">Send SMS to Selected Area</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
@@ -79,9 +79,18 @@
                                             <div class="card-header">
                                                 <h4 class="card-title">Campaign Information</h4>
                                             </div>
+                                            <div class="card-header">
+                                                <h5  class="card-title" style="font-size: 15px !important;">Your Balance: {{$customer->balance}}</h5 >
+                                            </div>
+                                            <div class="card">
+                                                <h6 class="card-title">
+                                                    
+                                                </h6>
+                                            </div>
+                                           
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    <form action="{{route('sms.area')}}">
+                                                    <form action="{{route('sms.store')}}">
                                                         @csrf
                                                         <!-- table hover -->
                                                         <div>
@@ -98,32 +107,38 @@
                                                                     @php
                                                                     $i=1;
                                                                     @endphp
-                                                                    @foreach($database as $db)
                                                                     <tr>
                                                                         <td>{{ $i }}</td>
                                                                         <td>
                                                                         <div class="card-body">
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio" id="select" name="id" value="{{$db->id}}" onclick="addRow();" required>{{$db->name}}
+                                                                                <input class="form-check-input" type="radio" id="select" name="id" value="{{$database->id}}" onclick="addRow();" checked>{{$database->name}}
                                                                             </div>
                                                                         </div>
                                                                         </td>
-                                                                        <td>{{$db->number}}</td>
+                                                                        <td>0--{{$database->number}}</td>
                                                                     </tr>
                                                                     @php
                                                                     $i= $i+1;
                                                                     @endphp
-                                                                    @endforeach
                                                                     
                                                                 </tbody>
                                                             </table>
-                                                        </div>
-                                                        {{$database->links()}}
-
-                                                        <button type="submit" class="btn btn-outline-success btn-sm"> 
-                                                            Submit
-                                                        </button>
-                                                    </form>
+                                                            <section class="section">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="form-group mb-2">
+                                                                                <label for="exampleFormControlTextarea1" class="form-label">Enter SMS Content</label>
+                                                                                    <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" onkeyup="counter(this.value)" rows="2" maxlength="2295" ></textarea>
+                                                                                    <span id=charcount></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-outline-success btn-sm"> 
+                                                                        Submit
+                                                                    </button>  
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,21 +150,20 @@
                         </div>
                     </div>
                 </section>
+              
             </div>          
         </div>
     </div>
-<!-- <script>
-    var sl = 0
-    function addRow(){
-        sl++;
-        var area = document.getElementById("select").value;
 
-            var html = "<tr>"
-            html +="<td>"+ sl +"</td>";
-            html += "<td><input name='start'></td>";
-            html += "<td><input name='end' ></td>";
-            html += "</tr>"
-        document.getElementById("tbid").insertRow().innerHTML = html;    
+<script>
+    function counter(str){
+        var count = str.length;
+        var max = 2295 - count;
+        // var sms = 1;
+
+        document.getElementById("charcount").innerHTML = count + ' Characters | ' + max +' Characters Left | SMS (160 Char./SMS)';
+
     }
-</script> -->
+</script>
+
 @endsection

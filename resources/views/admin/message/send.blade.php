@@ -39,6 +39,12 @@
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
+                            </li>
+                            <li class="sidebar-item ">
+                                <a href="{{route('user.message.list')}}" class='sidebar-link'>
+                                    <i class="bi bi-people"></i>
+                                    <span>Message Request</span>
+                                </a>
                             </li>  
                             <li class="sidebar-item">
                                 <a href="{{route('database')}}" class='sidebar-link'>

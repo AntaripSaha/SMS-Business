@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\DatabaseController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\UserMessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,7 @@ Route::prefix('user')->middleware('user')->group(function(){
 
     Route::any('/campaign', [UserController::class, 'campaign'])->name('user.campaign');
     Route::any('/sms/area', [UserController::class, 'sms_area'])->name('sms.area');
+    Route::any('/sms/send', [UserController::class, 'store'])->name('sms.store');
 
 });
 
@@ -52,5 +54,8 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/database/edit/{id}', [DatabaseController::class, 'edit'])->name('database.edit');
     Route::any('/database/update/{id}', [DatabaseController::class, 'update'])->name('database.update');
     Route::any('/database/delete/{id}', [DatabaseController::class, 'delete'])->name('database.delete');
+
+    Route::any('/message/requests',[UserMessageController::class, 'list'])->name('user.message.list');
+
     
 });
