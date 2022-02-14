@@ -69,8 +69,21 @@
                                 <div class="card-header">
                                     <h4 class="card-title">Databse List</h4>
                                 </div>
+                                
                                 <div class="card-content">
+                                    
                                     <div class="card-body">
+
+                                    <div>
+                                        <form action="{{route('database.search')}}">
+                                            @csrf
+                                            <input type="text" class="form-control" name="name"  style="width: 339px; margin-bottom:20px" >
+                                            <button type="submit" class="btn btn-outline-info btn-sm" style="position: absolute;left: 362px;top: 27px;">
+                                                Search
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
                                         <form action="{{route('database.add')}}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-info btn-sm">

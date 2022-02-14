@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/database/edit/{id}', [DatabaseController::class, 'edit'])->name('database.edit');
     Route::any('/database/update/{id}', [DatabaseController::class, 'update'])->name('database.update');
     Route::any('/database/delete/{id}', [DatabaseController::class, 'delete'])->name('database.delete');
+    Route::any('/database/search', [DatabaseController::class, 'search'])->name('database.search');
 
     Route::any('/message/requests',[UserMessageController::class, 'list'])->name('user.message.list');
     Route::any('/message/processing/{id}/{status}',[UserMessageController::class, 'action'])->name('user.message.action');

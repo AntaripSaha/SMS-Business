@@ -22,9 +22,12 @@ class DatabaseController extends Controller
         
        return view('admin.database.database_list', compact('database'));
     }
+    public function search(Request $req){
+        $database = Database::where('name', 'LIKE', "%{$req->name}%")->paginate(5);
+        return view('admin.database.database_list', compact('database'));
+    }
     public function add_data(){
         return view('admin.database.add');
-
     }
     public function store(Request $req){
         $database = new Database;
