@@ -28,7 +28,6 @@
                             </a>
                         </li>
                        
-                        <li class="sidebar-title">Pages</li>
 
                         <li class="sidebar-item active ">
                             <a href="{{route('client.home')}}" class='sidebar-link'>

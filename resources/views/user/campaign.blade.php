@@ -26,7 +26,6 @@
                                 <span>Campaign</span>
                             </a>
                         </li>            
-                        <li class="sidebar-title">Pages</li>
 
                       
                         <li class="sidebar-item  ">
