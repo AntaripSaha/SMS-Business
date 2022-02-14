@@ -13,8 +13,8 @@ class UserController extends Controller
 {
     public function index(){
         $customer = Customer::where('id', auth()->user()->id)->first();
-        $messages = RequestMessage::where('customer_id', auth()->user()->id)->first();
-        return view('user.dashboard', compact('customer'));
+        $messages = RequestMessage::with('database')->orderBy('id', 'desc')->where('customer_id', auth()->user()->id)->paginate('5');
+        return view('user.dashboard', compact('customer', 'messages'));
     }
 
     public function campaign(){

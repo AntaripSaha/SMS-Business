@@ -19,18 +19,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
-
-                        <li class="sidebar-item active ">
-                            <a href="{{route('client.home')}}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                       
-
-                        <li class="sidebar-title">Pages</li>
+                        <li class="sidebar-title">Balance: {{$customer->balance}}</li>
 
                         <li class="sidebar-item  ">
                             <a href="{{route('user.campaign')}}" class='sidebar-link'>
@@ -39,9 +28,15 @@
                             </a>
                         </li>
                        
+                        <li class="sidebar-title">Pages</li>
 
-
-                        
+                        <li class="sidebar-item active ">
+                            <a href="{{route('client.home')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+               
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -64,91 +59,78 @@
                 @yield('content')   
 
                 <div class="page-heading">
-                    <h3>Profile Statistics</h3>
+                    <h3>Reports</h3>
                 </div>
                 <div class="page-content">
-                    <section class="row">
-                        <div class="col-12 col-lg-9">
-                            <div class="row">
-                                <div class="col-6 col-lg-3 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body px-3 py-4-5">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="stats-icon purple">
-                                                        <i class="iconly-boldShow"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6 class="text-muted font-semibold">Profile Views</h6>
-                                                    <h6 class="font-extrabold mb-0">112.000</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   <!-- Hoverable rows start -->
+                <section class="section">
+                    <div class="row" id="table-hover-row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Messages List</h4>
                                 </div>
-                                <div class="col-6 col-lg-3 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body px-3 py-4-5">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="stats-icon blue">
-                                                        <i class="iconly-boldProfile"></i>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-0" style="margin-top:20px; margin-bottom:px !important;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Customer</th>
+                                                    <th>Area</th>
+                                                    <th>Quantity</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($messages as $key=>$msg)
+                                                <tr>
+                                                    <td class="text-bold-500">{{$msg->database->name}}</td>
+                                                    <td class="text-bold-500">{{Str::limit($msg->message, 30)}}</td>
+                                                    <td class="text-bold-500">{{$msg->database->number}}</td>
+                                                    <td>
+                                                        <!-- Example single danger button -->
+                                                    <div class="btn-group">
+                                                        @if($msg->status == 0)
+                                                        <button type="button" class="btn btn-warning btn-sm">
+                                                            Submitted
+                                                        </button>
+                                                        @elseif($msg->status == 1)
+                                                        <button type="button" class="btn btn-secondary btn-sm">
+                                                            Pending
+                                                        </button>
+                                                        @elseif($msg->status == 2)
+                                                        <button type="button" class="btn btn-info btn-sm">
+                                                            Processing
+                                                        </button>
+                                                        @elseif($msg->status == 3)
+                                                        <button type="button" class="btn btn-success btn-sm">
+                                                            Completed
+                                                        </button>
+                                                        @endif
                                                     </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                                    <h6 class="font-extrabold mb-0">183.000</h6>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                            
+                                        </table>
+                                        
                                     </div>
-                                </div>
-                                <div class="col-6 col-lg-3 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body px-3 py-4-5">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="stats-icon green">
-                                                        <i class="iconly-boldAdd-User"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6 class="text-muted font-semibold">Following</h6>
-                                                    <h6 class="font-extrabold mb-0">80.000</h6>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    {{$messages->links()}}
                                     </div>
-                                </div>
-                                <div class="col-6 col-lg-3 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body px-3 py-4-5">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="stats-icon red">
-                                                        <i class="iconly-boldBookmark"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                                    <h6 class="font-extrabold mb-0">112</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
+
+                                  
                                 </div>
                             </div>
-                        
-                        
                         </div>
-                        
-                    </section>
+                    </div>
+                </section>
+                <!-- Hoverable rows end -->
+
                 </div>
-
-         
-
-          
         </div>
     </div>
 </body>

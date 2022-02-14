@@ -18,22 +18,23 @@
                     </div>
                     <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
-
-                        <li class="sidebar-item  ">
-                            <a href="{{route('client.home')}}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>                     
-                        <li class="sidebar-title">Pages</li>
+                        <li class="sidebar-title">Balance: {{ $customer->balance }} </li>
 
                         <li class="sidebar-item active ">
                             <a href="{{route('user.campaign')}}" class='sidebar-link'>
                                 <i class="bi bi-people"></i>
                                 <span>Campaign</span>
                             </a>
-                        </li>
+                        </li>            
+                        <li class="sidebar-title">Pages</li>
+
+                      
+                        <li class="sidebar-item  ">
+                            <a href="{{route('client.home')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li> 
                                             
                     </ul>
                 </div>

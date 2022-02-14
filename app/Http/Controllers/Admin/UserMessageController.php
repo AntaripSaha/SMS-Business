@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserMessageController extends Controller
 {
     public function list(){
-         $messages = RequestMessage::with('database', 'user')->orderBy('id', 'DESC')->paginate(4);
+        $messages = RequestMessage::with('database', 'user')->orderBy('id', 'DESC')->paginate(4);
         return view('admin.message.message_list', compact('messages'));
     }
     public function action( $id, $status){
