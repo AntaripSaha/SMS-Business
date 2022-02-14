@@ -58,5 +58,7 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/message/requests',[UserMessageController::class, 'list'])->name('user.message.list');
     Route::any('/message/processing/{id}/{status}',[UserMessageController::class, 'action'])->name('user.message.action');
 
+    Route::any('/message/view/{id}', [UserMessageController::class, 'msg_view'] )->name('msg.view');
+
     
 });

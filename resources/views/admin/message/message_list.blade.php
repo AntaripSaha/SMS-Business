@@ -1,6 +1,5 @@
 @include('layouts/layout')
 @yield('content')
-
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -80,21 +79,22 @@
                                                     <th>Area</th>
                                                     <th>Quantity</th>
                                                     <th>Action</th>
-                                                    <th>Delete</th>
+                                                    <th>View</th>
+                                                    <!-- <th>Delete</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($messages as $key=>$msg)
                                                 <tr>
-                                                    <td class="text-bold-500">{{$msg->user->name}}</td>
+                                                    <td class="text-bold-500">{{$msg->user->phone}}</td>
                                                     <td class="text-bold-500">{{$msg->database->name}}</td>
-                                                    <td>{{ $msg->quantity }}</td>
+                                                    <td>{{ $msg->database->number }}</td>
                                                     <td>
                                                         <!-- Example single danger button -->
                                                     <div class="btn-group">
                                                         @if($msg->status == 0)
                                                         <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            Action
+                                                            Requested
                                                         </button>
                                                         @elseif($msg->status == 1)
                                                         <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -116,13 +116,19 @@
                                                         </ul>
                                                     </div>
                                                     </td>
-                                                    <td><div class="row">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-sm-2">
+                                                                <a href="{{route('msg.view', ['id'=>$msg->id])}}" class="btn btn-outline-info btn-sm">View</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!-- <td><div class="row">
                                                             <div class="col-sm-2">
                                                                 <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
                                                             </div>
                                                         </div>
-                                                    </td>
-                                            
+                                                    </td> -->
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -130,16 +136,12 @@
                                     </div>
                                     {{$messages->links()}}
                                     </div>
-
-                                  
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- Hoverable rows end -->
-
-           
+                <!-- Hoverable rows end -->           
             </div>
         </div>
     </div>

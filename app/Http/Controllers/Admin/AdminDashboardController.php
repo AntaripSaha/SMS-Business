@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\User;
 use App\Models\History;
+use App\Models\RequestMessage;
 use DB;
 
 class AdminDashboardController extends Controller
 {
     public function index(){
-        return view('admin.dashboard');
+        $total_customer = Customer::count();
+        $total_msg_req = RequestMessage::count();
+        $total_new_msg = RequestMessage::where('status', 0)->count();
+        $total_msg_pending = RequestMessage::where('status', 1)->count();
+        $total_msg_processing = RequestMessage::where('status', 2)->count();
+        $total_msg_completed = RequestMessage::where('status', 3)->count();
+        return view('admin.dashboard', compact('total_new_msg','total_customer','total_msg_req','total_msg_pending','total_msg_processing','total_msg_completed'));
     }
     public function user(){
         $customers = Customer::paginate(10);

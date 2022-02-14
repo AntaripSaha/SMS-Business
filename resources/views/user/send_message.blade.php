@@ -130,7 +130,7 @@
                                                                         <div class="card-body">
                                                                             <div class="form-group mb-2">
                                                                                 <label for="exampleFormControlTextarea1" class="form-label">Enter SMS Content</label>
-                                                                                    <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" onkeyup="counter(this.value)" rows="2" maxlength="2295" ></textarea>
+                                                                                    <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" onkeyup="counter(this.value)" rows="2" maxlength="772" required></textarea>
                                                                                     <span id=charcount></span>
                                                                             </div>
                                                                         </div>
@@ -159,7 +159,7 @@
 <script>
     function counter(str){
         var count = str.length;
-        var max = 2295 - count;
+        var max = 772 - count;
         // var sms = 1;
 
         document.getElementById("charcount").innerHTML = count + ' Characters | ' + max +' Characters Left | SMS (160 Char./SMS)';
