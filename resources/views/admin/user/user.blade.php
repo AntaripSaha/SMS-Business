@@ -8,7 +8,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="index.html"><img src="{{asset('assets/images/logo/logo.png')}}" alt="Logo" srcset=""></a>
+                                <a href="{{route('admin.dashboard')}}"><img src="{{asset('assets/images/logo/logo.png')}}" alt="Logo" srcset=""></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -124,7 +124,6 @@
                                                             $i = 1;
                                                             @endphp
                                                             @foreach($customers as  $key=>$customer)
-                                                            
                                                             <tr>
                                                                 <td class="text-bold-500">{{$i}}</td>
                                                                 <td>{{$customer->name}}</td>
@@ -133,7 +132,6 @@
                                                                 <td>{{$customer->user_type}}</td>
                                                                 <td>{{$customer->status}}</td>
                                                                 <td>{{$customer->balance}}</td>
-                                                                
                                                                 <td>{{$customer->sms_rate}}</td>
                                                                 <td>
                                                                     <div class="col-sm-2">
@@ -149,7 +147,6 @@
                                                                                             <form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">
                                                                                                 @csrf
                                                                                                 <input type="hidden" class="form-control" name="id" value="{{$customer->id}}">
-                                                                                                
                                                                                                 <div class="mt-radio-inline">
                                                                                                     <label class="mt-radio">
                                                                                                     <input type="hidden" name="user_id" id="user_id" value="{{$customer->id}}">
@@ -161,8 +158,6 @@
                                                                                                         <span></span>
                                                                                                     </label>
                                                                                                 </div>
-                                                                                                
-                                                                                              
                                                                                                 <div class="mb-3">
                                                                                                     <label class="col-form-label">Transaction Amount:</label>
                                                                                                     <input type="text" class="form-control" name="balance_in" value="0">
@@ -172,7 +167,6 @@
                                                                                                         save
                                                                                                     </button>
                                                                                                 </div>
-
                                                                                             </form>
                                                                                         </div>
                                                                                         <div class="modal-footer">

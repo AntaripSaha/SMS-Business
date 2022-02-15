@@ -36,8 +36,6 @@ Route::prefix('user')->middleware('user')->group(function(){
 
 Route::prefix('admin')->middleware('admin')->group(function(){
 
-    
-
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/user', [AdminDashboardController::class, 'user'])->name('admin.user');
@@ -60,6 +58,4 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/message/processing/{id}/{status}',[UserMessageController::class, 'action'])->name('user.message.action');
 
     Route::any('/message/view/{id}', [UserMessageController::class, 'msg_view'] )->name('msg.view');
-
-    
 });

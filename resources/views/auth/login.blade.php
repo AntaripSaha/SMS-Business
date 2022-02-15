@@ -7,14 +7,24 @@ body  {
   background-image: url("/assets/smartphone.jpg");
   background-color: #cccccc;
 }
+
+#grad1 {
+  height: 369px;
+  width: 491px;
+  background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
+  background-color: #fff0;
+}
+
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+            <div class="card" id="grad1" >
                 <div class="card-body">
+                    <div style="margin-bottom: 37px; font-weight: 600 ; margin-left: 174px ; margin-top: 3px;font-size: 45px;">
+                        Login
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -74,7 +84,7 @@ body  {
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-outline-info" style="height: 40px; width: 128px;">
+                                <button type="submit" class="btn btn-sm" style="height: 45px; width: 140px; background-color: #bc23cf42;">
                                     {{ __('Login') }}
                                 </button>
 
