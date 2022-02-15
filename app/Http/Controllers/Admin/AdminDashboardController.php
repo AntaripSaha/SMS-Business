@@ -23,7 +23,7 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard', compact('total_new_msg','total_customer','total_msg_req','total_msg_pending','total_msg_processing','total_msg_completed'));
     }
     public function user(){
-        $customers = Customer::paginate(10);
+        $customers = Customer::orderBy('id', 'desc')->paginate(10);
 
         $history = History::groupBy('user_id')
                             ->select(DB::raw("user_id, (sum(balance_in) - sum(balance_out)) as history"))
@@ -45,11 +45,13 @@ class AdminDashboardController extends Controller
         $customer->phone = $req->phone;
         $customer->email = $req->email;
         $customer->pass = $req->password;
+        $customer->sms_rate = $req->sms_rate;
         $customer->save();
 
         $user = new User;
         $user->name =  $req->name;
         $user->email =  $req->email;
+        $user->phone = $req->phone;
         $user->password = Hash::make($req['password']);
         $user->is_admin = 2;
         $user->save();

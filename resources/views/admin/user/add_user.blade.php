@@ -90,15 +90,12 @@
                                             <label for="phone">Phone</label>
                                             <input type="text" class="form-control" name="phone" required>
                                         </div>
-                                        <div class="col-md-6 mb-4">
-                                                    <label for="status">Status</label>
-                                                    <fieldset class="form-group">
-                                                        <select class="form-select" id="basicSelect">
-                                                            <option>Active</option>
-                                                            <option>InActive</option>
-                                                        </select>
-                                                    </fieldset>
+                                       
+                                        <div class="form-group">
+                                            <label for="sms_rate">SMS Rate</label>
+                                            <input type="text" class="form-control" name="sms_rate" required>
                                         </div>
+                                       
 
                                         
                                     </div>

@@ -120,10 +120,13 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @php
+                                                            $i = 1;
+                                                            @endphp
                                                             @foreach($customers as  $key=>$customer)
                                                             
                                                             <tr>
-                                                                <td class="text-bold-500">{{$customer->id}}</td>
+                                                                <td class="text-bold-500">{{$i}}</td>
                                                                 <td>{{$customer->name}}</td>
                                                                 <td class="text-bold-500">{{$customer->phone}}</td>
                                                                 <td>{{$customer->email}}</td>
@@ -181,6 +184,9 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
+                                                            @php
+                                                            $i++;
+                                                            @endphp
                                                             @endforeach
                                                         </tbody>
                                                     </table>
