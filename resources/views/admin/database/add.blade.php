@@ -1,5 +1,7 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+
+
+@section('content')
 
 
 
@@ -60,6 +62,11 @@
     </div>    
     <div id="app">
         <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
         @include('layouts/flash-msg')
         @yield('content')  
             <div class="page-heading">
@@ -113,3 +120,4 @@
             </div>
         </div>
     </div>
+    @endsection

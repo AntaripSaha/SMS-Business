@@ -1,5 +1,34 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+
+
+@section('content')
+
+<style>
+    #search{
+        width: 36%; 
+        margin-bottom:20px
+    }
+    @media only screen and (max-width: 500px) {
+    #search {
+        width: 100%; 
+        margin-bottom:20px
+  }
+}
+
+#s_button{
+    position: absolute;
+    left: 372px;
+    top: 24px;
+    padding: 7px;   
+  }
+@media only screen and (max-width: 500px) {
+    #s_button {
+    position: inherit;
+    left: 264px;
+    top: 64px;
+  }
+}
+</style>
 
     <div id="app">
         <div id="sidebar" class="active">
@@ -32,12 +61,12 @@
                                     <span>Users</span>
                                 </a>
                             </li>  
-                            <li class="sidebar-item ">
+                            <!-- <li class="sidebar-item ">
                                 <a href="{{route('msg.send')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sidebar-item ">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
@@ -58,6 +87,11 @@
     </div>
     <div id="app">
         <div id="main">
+        <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+        </header>
         @include('layouts/flash-msg')
         @yield('content')  
             <div class="page-heading">
@@ -74,19 +108,22 @@
                                     
                                     <div class="card-body">
 
-                                    <div>
+                                    <div class="row">
+                                        <div >
                                         <form action="{{route('database.search')}}">
                                             @csrf
-                                            <input type="text" class="form-control" name="name"  style="width: 339px; margin-bottom:20px" >
-                                            <button type="submit" class="btn btn-outline-info btn-sm" style="position: absolute;left: 362px;top: 27px;">
+                                            <input type="text" class="form-control" name="name" id="search"   >
+                                            <button type="submit" class="btn btn-outline-info btn-sm" id="s_button">
                                                 Search
                                             </button>
                                         </form>
+
+                                        </div>
                                     </div>
                                     
                                         <form action="{{route('database.add')}}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-info btn-sm">
+                                            <button type="submit" class="btn btn-info btn-sm" style="margin-top: 10px !important;">
                                                 Add Areas 
                                             </button>
                                         </form>
@@ -139,3 +176,4 @@
             </div>
         </div>
     </div>
+@endsection

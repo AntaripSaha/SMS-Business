@@ -1,5 +1,8 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+
+
+@section('content')
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -31,12 +34,12 @@
                                     <span>Users</span>
                                 </a>
                             </li>  
-                            <li class="sidebar-item ">
+                            <!-- <li class="sidebar-item ">
                                 <a href="{{route('msg.send')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
-                            </li>  
+                            </li>   -->
                             <li class="sidebar-item active">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
@@ -57,6 +60,11 @@
     </div>
     <div id="app">
         <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
         @include('layouts/flash-msg')
         @yield('content')  
             <div class="page-heading">
@@ -145,3 +153,4 @@
             </div>
         </div>
     </div>
+@endsection

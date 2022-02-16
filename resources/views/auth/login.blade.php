@@ -6,13 +6,50 @@
 body  {
   background-image: url("/assets/smartphone.jpg");
   background-color: #cccccc;
+  
 }
 
+@media only screen and (max-width: 500px) {
+    body  {
+  background-image: url("/assets/smartphone.jpg" ) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #cccccc;
+
+}
+}
 #grad1 {
   height: 369px;
   width: 491px;
   background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
   background-color: #fff0;
+}
+@media only screen and (max-width: 500px) {
+    #grad1 {
+  height: 421px;
+  width: 388px;
+  background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
+  background-color: #fff0;
+  margin-bottom: 447px;
+}
+}
+#login{
+    margin-bottom: 37px;
+    font-weight: 600 ;
+    margin-left: 174px ;
+    margin-top: 3px;
+    font-size: 45px;
+}
+@media only screen and (max-width: 500px) {
+        #login{
+        margin-bottom: 25px;
+        font-weight: 800;
+        margin-left: 112px;
+        margin-top: 3px;
+        font-size: 47px;
+        }
 }
 
 
@@ -20,9 +57,9 @@ body  {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" id="grad1" >
+        <div class="card" id="grad1" >
                 <div class="card-body">
-                    <div style="margin-bottom: 37px; font-weight: 600 ; margin-left: 174px ; margin-top: 3px;font-size: 45px;">
+                    <div id="login">
                         Login
                     </div>
                     <form method="POST" action="{{ route('login') }}">

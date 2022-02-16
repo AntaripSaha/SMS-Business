@@ -1,5 +1,5 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+@section('content')
 
 
 
@@ -95,3 +95,4 @@
             </div>
         </div>
     </div>
+@endsection    

@@ -1,5 +1,7 @@
-@include('layouts/layout')
-@yield('content') 
+@extends('layouts.layout')
+
+
+@section('content')
 
 <body>
 
@@ -19,7 +21,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Balance: {{$customer->balance}}</li>
+                        <li class="sidebar-title">Balance: {{$customer}}</li>
 
                         <li class="sidebar-item  ">
                             <a href="{{route('user.campaign')}}" class='sidebar-link'>
@@ -49,11 +51,7 @@
             </header>
 
           
-                <header class="mb-3">
-                    <a href="#" class="burger-btn d-block d-xl-none">
-                        <i class="bi bi-justify fs-3"></i>
-                    </a>
-                </header>
+               
                 @include('layouts/flash-msg')
                 @yield('content')   
 
@@ -76,8 +74,8 @@
                                         <table class="table table-hover mb-0" style="margin-top:20px; margin-bottom:px !important;">
                                             <thead>
                                                 <tr>
-                                                    <th>Customer</th>
                                                     <th>Area</th>
+                                                    <th>Msg</th>
                                                     <th>Quantity</th>
                                                     <th>Status</th>
                                                 </tr>
@@ -133,3 +131,4 @@
         </div>
     </div>
 </body>
+@endsection

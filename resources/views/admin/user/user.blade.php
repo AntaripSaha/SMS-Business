@@ -1,5 +1,8 @@
-@include('layouts/layout')
-@yield('content')
+@extends('layouts.layout')
+
+
+@section('content')
+
 
 <body>
     <div id="app">
@@ -33,12 +36,12 @@
                                     <span>Users</span>
                                 </a>
                             </li>  
-                            <li class="sidebar-item">
-                                <a href="{{route('msg.send')}}" class='sidebar-link'>
-                                    <i class="bi bi-people"></i>
-                                    <span>Messaging</span>
-                                </a>
-                            </li>
+                                <!-- <li class="sidebar-item">
+                                    <a href="{{route('msg.send')}}" class='sidebar-link'>
+                                        <i class="bi bi-people"></i>
+                                        <span>Messaging</span>
+                                    </a>
+                                </li> -->
                             <li class="sidebar-item ">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
@@ -83,10 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <section class="section">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
+                
                             <!-- Hoverable rows start -->
                             <section class="section">
                                 <div class="row" id="table-hover-row">
@@ -104,7 +104,7 @@
                                                    </a>
                                                 </div>
                                                 <!-- table hover -->
-                                                <div >
+                                                <div  class="table-responsive">
                                                     <table class="table table-hover mb-0">
                                                         <thead>
                                                             <tr>
@@ -195,10 +195,7 @@
                     
                             {{ $customers->links() }}
                             
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                         
                 
             </div>          
         </div>
@@ -226,3 +223,4 @@
 </body>
 
 </html>
+@endsection

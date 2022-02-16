@@ -1,6 +1,7 @@
+@extends('layouts.layout')
 
-@include('layouts/layout')
-@yield('content') 
+
+@section('content')
 
 
 
@@ -35,12 +36,12 @@
                                 <span>Users</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                                 <a href="{{route('msg.send')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
-                        </li>
+                        </li> -->
                         <li class="sidebar-item ">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
@@ -130,3 +131,4 @@
         </div>
     </div>
 </body>
+@endsection
