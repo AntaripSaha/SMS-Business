@@ -29,6 +29,7 @@ Route::prefix('user')->middleware('user')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('client.home');
 
     Route::any('/campaign', [UserController::class, 'campaign'])->name('user.campaign');
+    Route::any('/campaign/search', [UserController::class, 'search'])->name('campaign.search');
     Route::any('/sms/area', [UserController::class, 'sms_area'])->name('sms.area');
     Route::any('/sms/send', [UserController::class, 'store'])->name('sms.store');
 

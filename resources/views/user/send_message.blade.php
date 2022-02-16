@@ -116,7 +116,7 @@
                                                                             </div>
                                                                         </div>
                                                                         </td>
-                                                                        <td>0 -- {{$database->number}}</td>
+                                                                        <td>{{$database->number}}</td>
                                                                     </tr>
                                                                     @php
                                                                     $i= $i+1;

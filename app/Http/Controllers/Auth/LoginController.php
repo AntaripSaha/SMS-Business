@@ -46,9 +46,9 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt(['phone' => $req->phone, 'password' => $req->password])){
             if(auth()->user()->is_admin == 1){
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('user.message.list');
             }elseif(auth()->user()->is_admin == 2){
-                return redirect()->route('client.home');
+                return redirect()->route('user.campaign');
             }elseif(auth()->user()->is_admin == 0){
                 return redirect()->route('home');
             }

@@ -34,7 +34,7 @@ class DatabaseController extends Controller
         $database->name = $req->name;
         $database->number = $req->number;
         $database->save();
-        return redirect()->back()->with('success', 'Database Added');
+        return redirect()->route('database')->with('success', 'Database Added');
     }
     public function edit($id){
         $database = Database::find($id);
@@ -48,7 +48,7 @@ class DatabaseController extends Controller
         $database->name = $req->name;
         $database->number = $req->number;
         $database->save();
-        return redirect()->back()->with('success', 'Database Updated');
+        return redirect()->route('database')->with('success', 'Database Updated');
     }
     public function delete($id){
         $database = Database::find($id);

@@ -92,7 +92,7 @@
                                                             </div>
                                                                 <div class="form-group mb-2">
                                                                     <label for="exampleFormControlTextarea1" class="form-label">Enter Mobile Numbers</label>
-                                                                        <textarea class="form-control" name="number" id="exampleFormControlTextarea1" rows="5" >{{$database->number}}</textarea>
+                                                                        <input type="text" class="form-control"  name="number" value="{{$database->number}}" required>
                                                                 </div>
                                                             </div>
                                                         </div>

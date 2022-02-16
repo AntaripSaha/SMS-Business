@@ -24,10 +24,13 @@ class UserController extends Controller
         return view('user.dashboard', compact('customer', 'messages'));
     }
     public function campaign(){
-        
         $customer = Customer::where('phone', Auth::user()->phone)->first();
-        
         $database = Database::select('id', 'name', 'number')->orderBy('id', 'DESC')->paginate(5);        
+        return view('user.campaign', compact('database', 'customer'));
+    }
+    public function search(Request $req){
+        $customer = Customer::where('phone', Auth::user()->phone)->first();
+        $database = Database::where('name', 'LIKE', "%{$req->name}%")->select('id', 'name', 'number')->orderBy('id', 'DESC')->paginate(5);        
         return view('user.campaign', compact('database', 'customer'));
     }
     public function sms_area(Request $req){

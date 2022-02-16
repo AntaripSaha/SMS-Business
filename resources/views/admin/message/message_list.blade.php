@@ -74,7 +74,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Databse List</h4>
+                                    <h4 class="card-title">Request List</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">

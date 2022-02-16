@@ -36,12 +36,12 @@
                                     <span>Users</span>
                                 </a>
                             </li>  
-                            <li class="sidebar-item ">
+                            <!-- <li class="sidebar-item ">
                                 <a href="{{route('msg.send')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
                                     <span>Messaging</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sidebar-item ">
                                 <a href="{{route('user.message.list')}}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
@@ -96,7 +96,7 @@
                                                     </div>
                                                         <div class="form-group mb-2">
                                                             <label for="exampleFormControlTextarea1" class="form-label">Enter Mobile Numbers</label>
-                                                                <textarea class="form-control" name="number" id="exampleFormControlTextarea1" rows="5" ></textarea>
+                                                                <input type="text" name="number" class="form-control"  required>
                                                         </div>
                                                     </div>
                                                 </div>

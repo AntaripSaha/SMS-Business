@@ -2,6 +2,32 @@
 
 
 @section('content')
+<style>
+    #search{
+        width: 36%; 
+        margin-bottom:20px
+    }
+    @media only screen and (max-width: 500px) {
+    #search {
+        width: 100%; 
+        margin-bottom:20px
+  }
+}
+
+#s_button{
+    position: absolute;
+    left: 372px;
+    top: 24px;
+    padding: 7px;   
+  }
+@media only screen and (max-width: 500px) {
+    #s_button {
+    position: inherit;
+    left: 264px;
+    top: 64px;
+  }
+}
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div id="app">
         <div id="sidebar" class="active">
@@ -81,6 +107,19 @@
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
+                                                    <div class="row">
+                                                        <div >
+                                                        <form action="{{route('campaign.search')}}">
+                                                            @csrf
+                                                            <input type="text" class="form-control" name="name" id="search"   >
+                                                            <button type="submit" class="btn btn-outline-info btn-sm" id="s_button">
+                                                                Search
+                                                            </button>
+                                                        </form>
+
+                                                        </div>
+                                                    </div>
+
                                                     <form action="{{route('sms.area')}}">
                                                         @csrf
                                                         <!-- table hover -->

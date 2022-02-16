@@ -109,11 +109,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
-                                                                <th>Name</th>
-                                                                <th>Phone</th>
-                                                                <th>Email</th>
-                                                                <th>USER</th>
-                                                                <th>Status</th>
+                                                                <th>Customer</th>
                                                                 <th>Balance</th>
                                                                 <th>SMS Rate</th>
                                                                 <th>Add Balance</th>
@@ -126,11 +122,7 @@
                                                             @foreach($customers as  $key=>$customer)
                                                             <tr>
                                                                 <td class="text-bold-500">{{$i}}</td>
-                                                                <td>{{$customer->name}}</td>
                                                                 <td class="text-bold-500">{{$customer->phone}}</td>
-                                                                <td>{{$customer->email}}</td>
-                                                                <td>{{$customer->user_type}}</td>
-                                                                <td>{{$customer->status}}</td>
                                                                 <td>{{$customer->balance}}</td>
                                                                 <td>{{$customer->sms_rate}}</td>
                                                                 <td>
