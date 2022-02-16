@@ -13,6 +13,9 @@
         margin-bottom:20px
   }
 }
+#id{
+    margin: 2px;
+}
 
 #s_button{
     position: absolute;
@@ -125,7 +128,7 @@
                                                         <!-- table hover -->
                                                         <div>
                                                         
-                                                            <table class="table table-hover mb-0">
+                                                            <table class="table table-bordered">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Select</th>
