@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\DatabaseController;
@@ -18,25 +17,17 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::any('/', [HomeController::class, 'index'])->name('login');
 Route::any('/user/register', [AdminDashboardController::class, 'customer_store'])->name('customer.register');
-
 Auth::routes();
-
-
 Route::prefix('user')->middleware('user')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('client.home');
     Route::any('/campaign', [UserController::class, 'campaign'])->name('user.campaign');
     Route::any('/campaign/search', [UserController::class, 'search'])->name('campaign.search');
     Route::any('/sms/area', [UserController::class, 'sms_area'])->name('sms.area');
     Route::any('/sms/send', [UserController::class, 'store'])->name('sms.store');
-
 });
-
 Route::prefix('admin')->middleware('admin')->group(function(){
-
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/user', [AdminDashboardController::class, 'user'])->name('admin.user');
@@ -59,6 +50,5 @@ Route::prefix('admin')->middleware('admin')->group(function(){
 
     Route::any('/message/requests',[UserMessageController::class, 'list'])->name('user.message.list');
     Route::any('/message/processing/{id}/{status}',[UserMessageController::class, 'action'])->name('user.message.action');
-
     Route::any('/message/view/{id}', [UserMessageController::class, 'msg_view'] )->name('msg.view');
 });
