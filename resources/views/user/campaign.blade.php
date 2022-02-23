@@ -19,9 +19,9 @@
 
 #s_button{
     position: absolute;
-    left: 372px;
-    top: 24px;
-    padding: 7px;   
+    left: 371px;
+    top: 2px;
+    padding: 7px;  
   }
 @media only screen and (max-width: 500px) {
     #s_button {

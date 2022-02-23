@@ -110,6 +110,12 @@
                                                 <label for="password">Password</label>
                                                 <input type="text" class="form-control" name="password" value="{{$customers[0]->pass}}" required>
                                         </div>
+                                        <div class="form-group">
+                                                <input type="hidden" class="form-control" name="user_id" value="{{$users[0]->id}}" >
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="hidden" class="form-control" name="customer_id" value="{{$customers[0]->id}}" >
+                                        </div>
                                         
                                         
                                     </div>

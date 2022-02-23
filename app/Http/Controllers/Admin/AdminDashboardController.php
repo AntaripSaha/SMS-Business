@@ -86,6 +86,7 @@ class AdminDashboardController extends Controller
         }
     }
     //create user from Register Panel end
+    //User's Balance Update Start
     public function user_update(Request $req){
         $history = new History();
         $customer = Customer::find($req->id);
@@ -103,13 +104,29 @@ class AdminDashboardController extends Controller
         $customer->save();
         return redirect()->back()->with('success', 'Balance Updated');
     }
+    //User's Balance Update End
     public function edit_user($id){
         $customers = Customer::where('id', $id)->get();
         $users = User::where('phone', $customers[0]->phone)->get();
-        return view('admin.user.update_user_info', compact('customers'));
+        return view('admin.user.update_user_info', compact('customers','users'));
     }
+    //User's Information Update Start
     public function update_user_info(Request $req){
-        return $req;
+        $customer = Customer::where('id', $req->customer_id)->update([
+            'name'=>$req->phone,
+            'email'=>$req->phone,
+            'phone'=>$req->phone,
+            'sms_rate'=>$req->sms_rate,
+            'pass'=>$req->password
+        ]);
+        $user = User::where('id', $req->user_id)->update([
+            'name'=>$req->phone,
+            'email'=>$req->phone,
+            'phone'=>$req->phone,
+            'password'=>Hash::make($req->password)
+        ]);
+        return redirect()->route('admin.user')->with('success', 'User Updated');
     }
+    //User's Information Update End
 }
 
