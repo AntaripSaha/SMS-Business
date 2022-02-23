@@ -55,10 +55,32 @@ class AdminDashboardController extends Controller
         $user->password = Hash::make($req['password']);
         $user->is_admin = 2;
         $user->save();
-
-
-
         return redirect()->back()->with('success', 'Customer Added');
+    }
+
+    public function customer_store(Request $req){
+        $duplicate = User::where('phone', '=', $req->phone)->first();
+        if($duplicate != null){
+            return redirect()->back()->with('error', 'Customer Already Exists');
+        }
+        else{
+            $customer = new Customer;
+            $customer->name = $req->phone;
+            $customer->phone = $req->phone;
+            $customer->email = $req->phone;
+            $customer->pass = $req->password;
+            $customer->sms_rate = 1;
+            $customer->save();
+    
+            $user = new User;
+            $user->name =  $req->phone;
+            $user->email =  $req->phone;
+            $user->phone = $req->phone;
+            $user->password = Hash::make($req['password']);
+            $user->is_admin = 2;
+            $user->save();
+            return redirect()->route('login')->with('success', 'Customer Added');
+        }
 
     }
 

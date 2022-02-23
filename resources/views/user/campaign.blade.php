@@ -32,6 +32,8 @@
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -75,32 +77,9 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-
             @include('layouts/flash-msg')
             @yield('content')   
-            
-            <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Select Area</h3>
-                            <p class="text-subtitle text-muted">Send SMS to Selected Area</p>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">All Users</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <section class="section">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                            <!-- Hoverable rows start -->
+                                        <!-- Hoverable rows start -->
                             <section class="section">
                                 <div class="row" id="table-hover-row">
                                     <div class="col-12">
@@ -110,25 +89,20 @@
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    <div class="row">
-                                                        <div >
                                                         <form action="{{route('campaign.search')}}">
                                                             @csrf
-                                                            <input type="text" class="form-control" name="name" id="search"   >
+                                                            <input type="text" class="form-control" name="name" id="search">
                                                             <button type="submit" class="btn btn-outline-info btn-sm" id="s_button">
                                                                 Search
                                                             </button>
                                                         </form>
-
-                                                        </div>
-                                                    </div>
 
                                                     <form action="{{route('sms.area')}}">
                                                         @csrf
                                                         <!-- table hover -->
                                                         <div>
                                                         
-                                                            <table class="table table-bordered">
+                                                            <table class="table table-hover mb-0">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Select</th>
@@ -173,11 +147,8 @@
                                 </div>
                             </section>              
                             <!-- Hoverable rows end -->
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>          
+            
+
         </div>
     </div>
 <!-- <script>

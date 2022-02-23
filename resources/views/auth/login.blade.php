@@ -9,32 +9,13 @@ body  {
   
 }
 
-@media only screen and (max-width: 500px) {
-    body  {
-  background-image: url("/assets/smartphone.jpg" ) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: #cccccc;
-
-}
-}
 #grad1 {
-  height: 369px;
-  width: 491px;
+  height: 415px;
+  width: 495px;
   background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
   background-color: #fff0;
 }
-@media only screen and (max-width: 500px) {
-    #grad1 {
-  height: 421px;
-  width: 388px;
-  background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
-  background-color: #fff0;
-  margin-bottom: 447px;
-}
-}
+
 #login{
     margin-bottom: 37px;
     font-weight: 600 ;
@@ -42,19 +23,51 @@ body  {
     margin-top: 3px;
     font-size: 45px;
 }
+
+#reg{
+    margin-top: 8px;
+    width: 140px;
+    height: 45px;
+    margin-left: 162px;
+}
 @media only screen and (max-width: 500px) {
-        #login{
+    body  {
+    background-image: url("/assets/smartphone.jpg" ) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #cccccc;
+    }
+    #grad1 {
+    height: 421px;
+    width: 388px;
+    background-image: linear-gradient(to left, rgb(0 255 196 / 33%), rgb(0 149 255 / 26%));
+    background-color: #fff0;
+    margin-bottom: 447px;
+    }
+    #login{
         margin-bottom: 25px;
         font-weight: 800;
         margin-left: 112px;
         margin-top: 3px;
         font-size: 47px;
-        }
-}
+    }
+    #reg{
+        margin-top: -70px;
+        width: 140px;
+        height: 45px;
+        margin-left: 195px;
 
+    }
+}
 
 </style>
 <div class="container">
+<!-- Flush Messages -->
+    @include('layouts/flash-msg')
+    @yield('content')  
+<!-- Flush Messages -->
     <div class="row justify-content-center">
         <div class="col-md-8">
         <div class="card" id="grad1" >
@@ -111,7 +124,6 @@ body  {
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
@@ -132,6 +144,11 @@ body  {
                                 @endif -->
                             </div>
                         </div>
+                    </form>
+                    <form action="{{ route('register') }}">
+                        <button type="submit" class="btn btn-info btn-sm"  id="reg">
+                            Register
+                        </button>
                     </form>
                 </div>
             </div>

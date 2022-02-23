@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::any('/', [HomeController::class, 'index'])->name('login');
+Route::any('/user/register', [AdminDashboardController::class, 'customer_store'])->name('customer.register');
 
 Auth::routes();
 
 
 Route::prefix('user')->middleware('user')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('client.home');
-
     Route::any('/campaign', [UserController::class, 'campaign'])->name('user.campaign');
     Route::any('/campaign/search', [UserController::class, 'search'])->name('campaign.search');
     Route::any('/sms/area', [UserController::class, 'sms_area'])->name('sms.area');
