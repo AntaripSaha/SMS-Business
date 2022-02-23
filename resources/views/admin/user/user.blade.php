@@ -112,7 +112,8 @@
                                                                 <th>Customer</th>
                                                                 <th>Balance</th>
                                                                 <th>SMS Rate</th>
-                                                                <th>Add Balance</th>
+                                                                <th>Balance</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -168,6 +169,11 @@
                                                                                 </div>
                                                                             </div>
                                                                     </div>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-outline-info btn-sm">
+                                                                        <a href="{{route('user.edit', ['id'=>$customer->id])}}">Edit</a>
+                                                                    </button>
                                                                 </td>
                                                             </tr>
                                                             @php

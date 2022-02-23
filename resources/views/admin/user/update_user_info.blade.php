@@ -75,7 +75,7 @@
                             <h4 class="card-title">Basic Inputs</h4>
                         </div>
 
-                        <form action="{{route('user.store')}}" method="post">
+                        <form action="{{route('user.info.edit')}}" method="post">
                             @csrf
                         
                             <div class="card-body">
@@ -89,12 +89,12 @@
                                     
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" name="phone" required>
+                                            <input type="text" class="form-control" name="phone" value="{{$customers[0]->phone}}" required>
                                         </div>
                                        
                                         <div class="form-group">
                                             <label for="sms_rate">SMS Rate</label>
-                                            <input type="text" class="form-control" name="sms_rate" required>
+                                            <input type="text" class="form-control" name="sms_rate" value="{{$customers[0]->sms_rate}}"  required>
                                         </div>
                                        
 
@@ -108,7 +108,7 @@
                                         </div> -->
                                         <div class="form-group">
                                                 <label for="password">Password</label>
-                                                <input type="text" class="form-control" name="password" required>
+                                                <input type="text" class="form-control" name="password" value="{{$customers[0]->pass}}" required>
                                         </div>
                                         
                                         

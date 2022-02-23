@@ -43,6 +43,8 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::any('/user/add', [AdminDashboardController::class, 'add_user'])->name('add.user');
     Route::any('/user/store', [AdminDashboardController::class, 'user_store'])->name('user.store');
     Route::any('/user/update', [AdminDashboardController::class, 'user_update'])->name('user.update');
+    Route::any('/user/edit/{id}', [AdminDashboardController::class, 'edit_user'])->name('user.edit');
+    Route::any('/user/info/update', [AdminDashboardController::class, 'update_user_info'])->name('user.info.edit');
 
     Route::any('/send', [MessageController::class, 'index'])->name('msg.send');
     Route::any('/send/store', [MessageController::class, 'store'])->name('msg.store');
