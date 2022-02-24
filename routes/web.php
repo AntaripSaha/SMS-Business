@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\UserMessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,8 @@ use Illuminate\Support\Facades\Auth;
 Route::any('/', [HomeController::class, 'index'])->name('login');
 Route::any('/user/register', [AdminDashboardController::class, 'customer_store'])->name('customer.register');
 Auth::routes();
+
+$response = Http::get('http://example.com');
 Route::prefix('user')->middleware('user')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('client.home');
     Route::any('/campaign', [UserController::class, 'campaign'])->name('user.campaign');

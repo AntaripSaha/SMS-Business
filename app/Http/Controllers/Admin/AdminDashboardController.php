@@ -47,7 +47,6 @@ class AdminDashboardController extends Controller
             $customer->email = $req->phone;
             $customer->pass = $req->password;
             $customer->sms_rate = $req->sms_rate;
-            $customer->save();
 
             $user = new User;
             $user->name =  $req->phone;
@@ -55,7 +54,29 @@ class AdminDashboardController extends Controller
             $user->phone = $req->phone;
             $user->password = Hash::make($req['password']);
             $user->is_admin = 2;
-            $user->save();
+  
+            if($user->save() && $customer->save()){
+                $url = "https://portal.metrotel.com.bd/smsapi";
+                $data = [
+                    "api_key" => "C2000120621743647cdeb8.61438463",
+                    "type" => "text",
+                    "contacts" => "$req->phone",
+                    "senderid" => "8809612451779",
+                    "msg" => "You are registered in ZAMANIT SMS Panel.
+link: zmsg.zaman-it.com
+User_id: $req->phone
+Password: $req->password
+Thank you for the registration.",
+                  ];
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($ch);
+                curl_close($ch);
+            }
             return redirect()->route('admin.user')->with('success', 'Customer Added');
         }
     }
@@ -73,7 +94,6 @@ class AdminDashboardController extends Controller
             $customer->email = $req->phone;
             $customer->pass = $req->password;
             $customer->sms_rate = 1;
-            $customer->save();
 
             $user = new User;
             $user->name =  $req->phone;
@@ -81,7 +101,28 @@ class AdminDashboardController extends Controller
             $user->phone = $req->phone;
             $user->password = Hash::make($req['password']);
             $user->is_admin = 2;
-            $user->save();
+            if($user->save() && $customer->save()){
+                $url = "https://portal.metrotel.com.bd/smsapi";
+                $data = [
+                    "api_key" => "C2000120621743647cdeb8.61438463",
+                    "type" => "text",
+                    "contacts" => "$req->phone",
+                    "senderid" => "8809612451779",
+                    "msg" => "You are registered in ZAMANIT SMS Panel.
+link: zmsg.zaman-it.com
+User_id: $req->phone
+Password: $req->password
+Thank you for the registration.",
+                ];
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($ch);
+                curl_close($ch);
+            }
             return redirect()->route('login')->with('success', 'Customer Added');
         }
     }

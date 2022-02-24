@@ -39,9 +39,9 @@ class UserController extends Controller
         return view('user.send_message', compact('database', 'customer'));
     }
     public function store(Request $req){
-        
+       $phone = auth()->user()->phone;
        $total_area = Database::where('id', $req->id)->select('number')->get();
-       $customer_info = Customer::where('phone', auth()->user()->phone)->select('sms_rate', 'balance', 'balance_out')->get();
+       $customer_info = Customer::where('phone', auth()->user()->phone)->select('phone','sms_rate', 'balance', 'balance_out')->get();
        $msg_length = mb_strlen($req->msg,  "UTF-8" );
        $balance = $customer_info[0]->balance;
        $balance_out = $customer_info[0]->balance_out;
@@ -57,7 +57,41 @@ class UserController extends Controller
                 $message->area = $req->id;
                 $message->message = $req->msg;
                 $message->customer_id = auth()->user()->id;
-                $message->save();
+                if($message->save()){
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801973009007",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801938898351",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                }
                 Customer::where('phone', auth()->user()->phone)->update(['balance'=>$balance]);
                 Customer::where('phone', auth()->user()->phone)->update(['balance_out'=>$balance_out]);
                 return redirect()->route('user.campaign')->with('success', 'Request Placed Successfully');
@@ -75,7 +109,41 @@ class UserController extends Controller
                 $message->area = $req->id;
                 $message->message = $req->msg;
                 $message->customer_id = auth()->user()->id;
-                $message->save();
+                if($message->save()){
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801973009007",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801938898351",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                }
                 Customer::where('phone', auth()->user()->phone)->update(['balance'=>$balance]);
                 Customer::where('phone', auth()->user()->phone)->update(['balance_out'=>$balance_out]);
                 return redirect()->route('user.campaign')->with('success', 'Request Placed Successfully');
@@ -92,7 +160,41 @@ class UserController extends Controller
                 $message->area = $req->id;
                 $message->message = $req->msg;
                 $message->customer_id = auth()->user()->id;
-                $message->save();
+                if($message->save()){
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801973009007",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801938898351",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                }
                 Customer::where('phone', auth()->user()->phone)->update(['balance'=>$balance]);
                 Customer::where('phone', auth()->user()->phone)->update(['balance_out'=>$balance_out]);
                 return redirect()->route('user.campaign')->with('success', 'Request Placed Successfully');
@@ -109,7 +211,41 @@ class UserController extends Controller
                 $message->area = $req->id;
                 $message->message = $req->msg;
                 $message->customer_id = auth()->user()->id;
-                $message->save();
+                if($message->save()){
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801973009007",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801938898351",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                }
                 Customer::where('phone', auth()->user()->phone)->update(['balance'=>$balance]);
                 Customer::where('phone', auth()->user()->phone)->update(['balance_out'=>$balance_out]);
                 return redirect()->route('user.campaign')->with('success', 'Request Placed Successfully');
@@ -126,7 +262,41 @@ class UserController extends Controller
                 $message->area = $req->id;
                 $message->message = $req->msg;
                 $message->customer_id = auth()->user()->id;
-                $message->save();
+                if($message->save()){
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801973009007",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    $url = "https://portal.metrotel.com.bd/smsapi";
+                    $data = [
+                        "api_key" => "C2000120621743647cdeb8.61438463",
+                        "type" => "text",
+                        "contacts" => "8801938898351",
+                        "senderid" => "8809612451779",
+                        "msg" => "You Have New Message Request In ZAMANIT SMS Portal. Customer:$phone .Thank You.",
+                    ];
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                }
                 Customer::where('phone', auth()->user()->phone)->update(['balance'=>$balance]);
                 Customer::where('phone', auth()->user()->phone)->update(['balance_out'=>$balance_out]);
                 return redirect()->route('user.campaign')->with('success', 'Request Placed Successfully');
