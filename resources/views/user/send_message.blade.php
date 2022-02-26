@@ -1,6 +1,4 @@
 @extends('layouts.layout')
-
-
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div id="app">
@@ -150,19 +148,36 @@
                         </div>
                     </div>
                 </section>
-              
             </div>          
         </div>
     </div>
-
 <script>
     function counter(str){
         var count = str.length;
         var max = 772 - count;
-        // var sms = 1;
-
-        document.getElementById("charcount").innerHTML = count + ' Characters | ' + max +' Characters Left | SMS (160 Char./SMS)';
-
+        var sms = 0;
+        var char = 160;
+        if(count != 0 && count <= 160){
+            sms = 1;
+            char = 160;
+        }
+        if(count >= 161 && count <= 313){
+            sms = 2;
+            char = 153;
+        }
+        if(count >= 313 && count <= 466){
+            sms = 3;
+            char = 153;
+        }
+        if(count >= 466 && count <= 619){
+            sms = 4;
+            char = 153;
+        }
+        if(count >= 619 && count <= 772){
+            sms = 5;
+            char = 153;
+        }
+        document.getElementById("charcount").innerHTML = count + ' Characters | ' + max +' Characters Left |'+sms+' SMS ('+char+' Char./SMS)';
     }
 </script>
 
